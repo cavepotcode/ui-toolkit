@@ -1,0 +1,104 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixin";
+
+.footer {
+  border-top: solid $BorderWidth $BorderBlack;
+  padding-top: $spaceBetween;
+  background-color: $DarkLavender;
+  @include backgroundPattern($DarkLavender, 1.8);
+  display: flex;
+  color: $White;
+  gap: $spaceBetween45;
+  padding: 30px;
+  flex-wrap: wrap;
+  .max-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .img-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      grid-gap: 20px;
+      gap: 20px;
+      width: 250px;
+      img {
+        width: 100%;
+      }
+    }
+    .text-wrapper {
+      display: flex;
+      column-gap: 60px;
+      align-items: flex-start;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    .social-media {
+      display: flex;
+      gap: 7px;
+      svg {
+        color: $White;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .title {
+    @include textBasisBold($text);
+    color: white !important;
+    text-transform: uppercase;
+  }
+  .date-footer {
+    border-top: 0.5px solid rgba($White, 0.1);
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .media-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+@include media-md {
+  .footer {
+    display: flex;
+    .max-container {
+      flex-direction: column;
+      .img-wrapper {
+        width: 100%;
+        padding: 0 40px 0 40px;
+        display: flex;
+        gap: 20px;
+        .column {
+          display: flex;
+          align-items: center;
+        }
+        a {
+          width: 50%;
+        }
+      }
+      .text-wrapper {
+        gap: 0;
+        margin-top: 20px;
+        .column.hide-mobile {
+          display: none;
+        }
+      }
+      .clutch-wrapper {
+        width: 135px;
+      }
+    }
+  }
+}

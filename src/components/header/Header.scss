@@ -1,0 +1,208 @@
+@import "../../../styles/main";
+@import "../../../styles/variables";
+@import "../../../styles/mixin";
+
+$logoHeight: 35px;
+
+.header {
+  border-bottom: solid $BorderWidth transparent;
+  transition: border-bottom ease 0.3s;
+  display: flex;
+  align-items: center;
+  height: $spaceBetween;
+  position: fixed;
+  background-color: var(--header-background-color);
+  opacity: 0.9;
+  z-index: 1000;
+  justify-content: space-between;
+  width: 100%;
+
+  .menu-btn {
+    align-self: center;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    right: 25px;
+    height: 20px;
+    width: 28px;
+    cursor: pointer;
+    @include transition-ease;
+
+    &__burger {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      width: 28px;
+      height: 3px;
+      border-radius: 10px;
+      background-color: var(--header-text-color);
+      @include transition-ease;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        width: 28px;
+        height: 3px;
+        border-radius: 10px;
+        background: var(--header-text-color);
+        @include transition-ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        width: 28px;
+        height: 3px;
+        background: var(--header-text-color);
+        border-radius: 10px;
+        @include transition-ease;
+      }
+      &.open {
+        transform: rotate(720deg);
+        background: transparent;
+
+        &::before {
+          transform: rotate(45deg) translate(5px, 8px);
+        }
+        &::after {
+          width: 28px;
+          transform: rotate(-45deg) translate(3px, -7px);
+        }
+      }
+    }
+  }
+
+  .nav {
+    // background-color: white;
+    top: 0;
+    left: 0;
+    opacity: 0.98;
+    visibility: visible;
+    &.open {
+      background-color: var(--header-background-color);
+      visibility: hidden;
+      .menu-nav {
+        &__item {
+          a {
+            font-size: 23px;
+            font-weight: 600;
+          }
+          display: inline;
+          padding-right: 1.5rem;
+        }
+      }
+    }
+    .menu-nav {
+      display: block;
+      transform: translateY(0);
+      height: 100%;
+      background: transparent;
+      text-align: right;
+
+      &__item {
+        display: inline;
+        padding-right: 1.5rem;
+      }
+
+      &__link {
+        font-size: 1.5rem;
+      }
+
+      &__item {
+        transform: translateX(100vw);
+        @include transition-ease;
+
+        &.open {
+          transform: translateX(0);
+        }
+      }
+      &__link {
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        padding: 32px 0;
+        border-radius: 5px;
+        font-weight: 600;
+        @include textBasis($text);
+        @include transition-ease;
+        color: var(--header-text-color);
+        &.active,
+        &:hover {
+          @include textBasisBold($text);
+          color: var(--header-text-color);
+        }
+      }
+
+      &__link-contact {
+        text-decoration: none;
+        padding: 7px;
+        border-radius: 5px;
+        background-color: var(--contact-btn-color);
+        color: var(--contact-btn-color-text);
+        font-weight: bold;
+        border: $BorderWidth var(--header-text-color) solid;
+      }
+
+      &__link-contact:hover {
+        background-color: var(--contact-btn-color-text);
+        color: var(--contact-btn-color);
+        border: var(--contact-btn-color) solid;
+      }
+    }
+  }
+  &.colapse {
+    transition: background-color ease 0.3s;
+    background-color: var(--header-background-color);
+    color: var(--header-background-color);
+  }
+
+  @for $i from 1 through 7 {
+    .menu-nav__item:nth-child(#{$i}) {
+      transition-delay: ($i * 0.1s)+0.15s;
+    }
+  }
+}
+
+// maximo 1024px
+@include media-lg {
+  .header {
+    .menu-btn {
+      display: block;
+      @include transition-ease;
+    }
+    .nav {
+      visibility: hidden;
+
+      .menu-nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+        background-color: var(--header-background-color);
+        list-style-type: none;
+        padding-right: 1rem;
+        transform: translateY(-100%);
+        opacity: 0.9;
+        gap: 50px;
+        @include transition-ease;
+
+        &.open {
+          transform: translateY(0);
+        }
+        &__link {
+          padding: 0;
+        }
+      }
+      &.open {
+        visibility: visible;
+        position: fixed;
+        width: 100%;
+      }
+    }
+  }
+}
