@@ -1,0 +1,156 @@
+@import "./variables";
+
+@mixin textBasisXL($size) {
+  font-size: $size;
+  font-family: Montserrat-ExtraBold;
+  line-height: normal;
+  letter-spacing: 2vw;
+  color: $PineTree;
+}
+
+@mixin textBasisBold($size) {
+  font-size: $size;
+  font-family: Montserrat-ExtraBold;
+  line-height: normal;
+  font-weight: 700;
+  color: $PineTree;
+}
+
+@mixin textBasis($size) {
+  font-size: $size;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $PineTree;
+}
+
+@mixin textBasisLighter($size) {
+  font-size: $size;
+  font-weight: lighter;
+  font-stretch: lighter;
+  font-style: lighter;
+  line-height: lighter;
+  letter-spacing: lighter;
+  color: $PineTree;
+}
+
+@mixin backgroundPattern(
+  $color,
+  $opacity,
+  $secondColor: $color,
+  $thirthColor: $secondColor,
+  $forthColor: $thirthColor,
+  $fithColor: $forthColor,
+  $sixthColor: $fithColor
+) {
+  background-color: $color;
+  background: linear-gradient(
+      0,
+      rgba($color, 0 * $opacity) 20%,
+      rgba($color, 0.1 * $opacity) 20%,
+      rgba($color, 0.1 * $opacity) 40%,
+      rgba($color, 0.2 * $opacity) 40%,
+      rgba($color, 0.2 * $opacity) 60%,
+      rgba($color, 0.4 * $opacity) 60%,
+      rgba($color, 0.4 * $opacity) 80%,
+      rgba($color, 0.5 * $opacity) 80%
+    ),
+    linear-gradient(
+      45deg,
+      rgba($secondColor, 0 * $opacity) 20%,
+      rgba($secondColor, 0.1 * $opacity) 20%,
+      rgba($secondColor, 0.1 * $opacity) 40%,
+      rgba($secondColor, 0.2 * $opacity) 40%,
+      rgba($secondColor, 0.2 * $opacity) 60%,
+      rgba($secondColor, 0.4 * $opacity) 60%,
+      rgba($secondColor, 0.4 * $opacity) 80%,
+      rgba($secondColor, 0.5 * $opacity) 80%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba($thirthColor, 0 * $opacity) 20%,
+      rgba($thirthColor, 0.1 * $opacity) 20%,
+      rgba($thirthColor, 0.1 * $opacity) 40%,
+      rgba($thirthColor, 0.2 * $opacity) 40%,
+      rgba($thirthColor, 0.2 * $opacity) 60%,
+      rgba($thirthColor, 0.4 * $opacity) 60%,
+      rgba($thirthColor, 0.4 * $opacity) 80%,
+      rgba($thirthColor, 0.5 * $opacity) 80%
+    ),
+    linear-gradient(
+      90deg,
+      rgba($forthColor, 0 * $opacity) 20%,
+      rgba($forthColor, 0.1 * $opacity) 20%,
+      rgba($forthColor, 0.1 * $opacity) 40%,
+      rgba($forthColor, 0.2 * $opacity) 40%,
+      rgba($forthColor, 0.2 * $opacity) 60%,
+      rgba($forthColor, 0.4 * $opacity) 60%,
+      rgba($forthColor, 0.4 * $opacity) 80%,
+      rgba($forthColor, 0.5 * $opacity) 80%
+    ),
+    linear-gradient(
+      -90deg,
+      rgba($fithColor, 0 * $opacity) 20%,
+      rgba($fithColor, 0.1 * $opacity) 20%,
+      rgba($fithColor, 0.1 * $opacity) 40%,
+      rgba($fithColor, 0.2 * $opacity) 40%,
+      rgba($fithColor, 0.2 * $opacity) 60%,
+      rgba($fithColor, 0.4 * $opacity) 60%,
+      rgba($fithColor, 0.4 * $opacity) 80%,
+      rgba($fithColor, 0.5 * $opacity) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba($sixthColor, 0 * $opacity) 20%,
+      rgba($sixthColor, 0.1 * $opacity) 20%,
+      rgba($sixthColor, 0.1 * $opacity) 40%,
+      rgba($sixthColor, 0.2 * $opacity) 40%,
+      rgba($sixthColor, 0.2 * $opacity) 60%,
+      rgba($sixthColor, 0.4 * $opacity) 60%,
+      rgba($sixthColor, 0.4 * $opacity) 80%,
+      rgba($sixthColor, 0.5 * $opacity) 80%
+    );
+}
+
+@mixin transition-ease {
+  transition: all 0.5s ease-in-out;
+}
+@mixin transition-ease-2s {
+  transition: all 0.2s ease-in-out;
+}
+@function set-text-color($color) {
+  @if (lightness($color) >40%) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+@mixin media-sm {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin media-lg {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin media-max-lg {
+  @media screen and (max-width: 1195px) {
+    @content;
+  }
+}
+@mixin media-xl {
+  @media screen and (max-width: 1600px) {
+    @content;
+  }
+}

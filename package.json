@@ -1,6 +1,6 @@
 {
   "name": "@cavepotcode/ui-toolkit",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "keywords": [
@@ -20,8 +20,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -45,7 +45,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "clean": "rimraf dist/",
-    "copyfiles": "copyfiles -u 1 src/**/*.scss dist/"
+    "copyfiles": "copyfiles -u 1 'src/**/*.scss' dist/"
   },
   "eslintConfig": {
     "extends": [
